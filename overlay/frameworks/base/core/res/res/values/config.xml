@@ -117,7 +117,7 @@
 
     <!-- Component name of the default wallpaper. This will be ImageWallpaper if not
                   specified -->
-    <string name="default_wallpaper_component">com.android.phasebeam/.PhaseBeamWallpaper</string>
+    <string name="default_wallpaper_component">@null</string>
 
     <!--  Maximum number of supported users -->
     <integer name="config_multiuserMaximumUsers">8</integer>
