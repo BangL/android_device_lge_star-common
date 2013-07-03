@@ -42,19 +42,19 @@ PRODUCT_COPY_FILES += \
 
 
 PRODUCT_PROPERTY_OVERRIDES += \
-        ro.opengles.version=131072 \
-        ro.telephony.call_ring.multiple=false \
-        ro.telephony.call_ring.delay=3000 \
-        ro.telephony.call_ring.absent=true \
-        ro.hardware.respect_als=true \
-        ro.bt.bdaddr_path=/sys/devices/platform/bd_address/bdaddr_if \
-	debug.sf.electron_frames=42 \
-	nv-camera-disable-early-graph=1 \
-	dalvik.vm.dexopt-data-only=1 \
-	sys.mem.max_hidden_apps=4 \
-	ro.lge.audio_soundexception=true \
-	ro.zram.default=18 \
-	persist.service.zram=18
+    ro.opengles.version=131072 \
+    ro.telephony.call_ring.multiple=false \
+    ro.telephony.call_ring.delay=3000 \
+    ro.telephony.call_ring.absent=true \
+    ro.hardware.respect_als=true \
+    ro.bt.bdaddr_path=/sys/devices/platform/bd_address/bdaddr_if \
+    debug.sf.electron_frames=42 \
+    nv-camera-disable-early-graph=1 \
+    dalvik.vm.dexopt-data-only=1 \
+    sys.mem.max_hidden_apps=4 \
+    ro.lge.audio_soundexception=true \
+    ro.zram.default=18 \
+    persist.service.zram=18
 
 $(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
 
@@ -68,7 +68,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/10-movestuff.sh:system/addon.d/10-movestuff.sh
 
-
+# mtp/adb fix
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/prebuilt/20mtp:system/etc/init.d/20mtp
 
 ## LGE stuffs
 PRODUCT_PACKAGES += \
@@ -83,10 +85,6 @@ PRODUCT_PACKAGES += \
 
 # Enable Torch
 PRODUCT_PACKAGES += Torch
-
-# Set default USB interface
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-	persist.sys.usb.config=mtp,adb
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 PRODUCT_MANUFACTURER := LGE
