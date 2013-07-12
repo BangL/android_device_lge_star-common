@@ -40,7 +40,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
     frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml
 
-
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.opengles.version=131072 \
     ro.telephony.call_ring.multiple=false \
@@ -50,11 +49,30 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.bt.bdaddr_path=/sys/devices/platform/bd_address/bdaddr_if \
     debug.sf.electron_frames=42 \
     nv-camera-disable-early-graph=1 \
-    dalvik.vm.dexopt-data-only=1 \
     sys.mem.max_hidden_apps=4 \
-    ro.lge.audio_soundexception=true \
+    ro.lge.audio_soundexception=true
+
+# Enable ZRAM by default
+PRODUCT_PROPERTY_OVERRIDES += \
     ro.zram.default=18 \
     persist.service.zram=18
+
+# Dexopt settings
+PRODUCT_PROPERTY_OVERRIDES += \
+    dalvik.vm.dexopt-data-only=1 \
+    dalvik.vm.dexopt-flags=m=y,u=n,v=n,o=v
+
+# Disable sending usage data
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.config.nocheckin=1
+
+# Enable AGPS
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.ril.def.agps.mode=1
+
+# Enable purgeable assets
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.purgeable_assets=1
 
 $(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
 
@@ -62,13 +80,21 @@ $(call inherit-product, build/target/product/full_base_telephony.mk)
 
 PRODUCT_LOCALES += hdpi
 
-## Ugly space-saving hack
+# Ugly space-saving hack
 PRODUCT_PACKAGES += \
     srec-en
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/10-movestuff.sh:system/addon.d/10-movestuff.sh
 
-# mtp/adb fix
+# Enable debugging
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.debuggable=1
+
+# Force MTP/ADB to be availible on bootup
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.service.adb.enable=1 \
+    ro.adb.secure=0 \
+    persist.sys.usb.config=mtp,adb
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/20mtp:system/etc/init.d/20mtp
 

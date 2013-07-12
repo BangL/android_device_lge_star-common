@@ -18,7 +18,6 @@ on init
     symlink /storage/sdcard /mnt/sdcard
     symlink /storage/sdcard /storage/sdcard0
 
-
 # Backward compatibility
     symlink /system/bin /bin
 
@@ -42,14 +41,14 @@ on post-fs
 
     chmod 0777 /data/misc/wifi/config_mac       # 20101202 mingi.sung@lge.com [WLAN] AT command - MAC address read/write function
     mkdir /data/audioprop 0777 system system
-# 20100716 mingi.sung@lge.com <make wifi directory> [START]
+# 20100716 mingi.sung@lge.com make wifi directory [START]
 # WIFI
     mkdir /data/misc/wifi/sockets 0770 wifi wifi
     setprop wifi.supplicant_scan_interval 20
     setprop wifi.interface wlan0
 # DHCP
     mkdir /data/misc/dhcp 0777 system system
-# 20100716 mingi.sung@lge.com <make wifi directory> [END]
+# 20100716 mingi.sung@lge.com make wifi directory [END]
 
     ## ANDY_PORTING LGDRM [lg-drm@lge.com 100401]
     # create dirs if not exist
@@ -85,10 +84,8 @@ on boot
     chown audio audio /dev/pts29
 # LGE_CHANGE_E [chahee.kim@lge.com] 2012-02-15
 
-
 # Power management settings
     write /sys/module/cpuidle/parameters/lp2_in_idle 1
-
 
     setprop net.tcp.buffersize.default 4096,87380,196608,4096,16384,110208
     setprop net.tcp.buffersize.wifi 4096,87380,393216,4096,16384,110208
@@ -116,13 +113,13 @@ on boot
     chown system system /sys/class/leds/buttonpanel/pulse_interval
 
 # 20101107, sglee76@lge.com, FOTA [START]
-        mkdir /data/fota 0777 system system
-        chown system system /data/fota
-        chmod 0777 /data/fota
+    mkdir /data/fota 0777 system system
+    chown system system /data/fota
+    chmod 0777 /data/fota
 
 # kernel read permission
-        chmod 644 /dev/block/mmcblk0p6
-        chmod 777 /dev/block/mmcblk0p5
+    chmod 644 /dev/block/mmcblk0p6
+    chmod 777 /dev/block/mmcblk0p5
 # 20101107, sglee76@lge.com, FOTA [END]
 
 ## LGE's bluetooth stuff
@@ -199,56 +196,45 @@ service nvcpud /system/bin/nvcpud
     user root
     group root
 
-# Daemon for Gyro Sensor
-#service motion /system/bin/motion
-#    class main
-#    user system
-#    group system
-#    oneshot
-#    disabled
-
 on property:dev.bootcomplete=1
-    #start hdmid
     start motion
-### KSM
-### write /sys/kernel/mm/ksm/run 1
 
 service rawip_vsnet1 /system/bin/init.vsnet 1
     class main
-   user root
-   group radio cache inet misc net_admin net_raw
-   disabled
-   oneshot
+    user root
+    group radio cache inet misc net_admin net_raw
+    disabled
+    oneshot
 
 service rawip_vsnet2 /system/bin/init.vsnet 2
     class main
-   user root
-   group radio cache inet misc net_admin net_raw
-   disabled
-   oneshot
+    user root
+    group radio cache inet misc net_admin net_raw
+    disabled
+    oneshot
 
 service rawip_vsnet3 /system/bin/init.vsnet 3
     class main
-   user root
-   group radio cache inet misc net_admin net_raw
-   disabled
-   oneshot
+    user root
+    group radio cache inet misc net_admin net_raw
+    disabled
+    oneshot
 
 service rawip_vsnet4 /system/bin/init.vsnet 4
     class main
-   user root
-   group radio cache inet misc net_admin net_raw
-   disabled
-   oneshot
+    user root
+    group radio cache inet misc net_admin net_raw
+    disabled
+    oneshot
 
 service vsnet1_down /system/bin/init.vsnet-down 1
-   user root
-   group radio cache inet misc
-   disabled
-   oneshot
+    user root
+    group radio cache inet misc
+    disabled
+    oneshot
 
 service vsnet2_down /system/bin/init.vsnet-down 2
-   user root
-   group radio cache inet misc
-   disabled
-   oneshot
+    user root
+    group radio cache inet misc
+    disabled
+    oneshot
