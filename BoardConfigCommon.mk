@@ -58,7 +58,3 @@ BOARD_HAS_VIBRATOR_IMPLEMENTATION := ../../device/lge/star-common/vibrator.c
 TARGET_RECOVERY_PRE_COMMAND := "/system/bin/setup-recovery"
 
 BOARD_SYSFS_LIGHT_SENSOR := "/sys/class/backlight/aat2870-backlight/brightness_mode"
-
-COMMON_GLOBAL_CFLAGS += -DICS_AUDIO_BLOB -DICS_CAMERA_BLOB
-TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := device/lge/star-common/releasetools/p990-newbl_ota_from_target_files
-TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/platform/fsl-tegra-udc/gadget/lun%d/
