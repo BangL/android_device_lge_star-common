@@ -24,6 +24,7 @@ BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
 TARGET_NEEDS_BLUETOOTH_INIT_DELAY := true
 BOARD_BLUEDROID_VENDOR_CONF := device/lge/star-common/vnd_bt.txt
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/lge/star-common/bluetooth
 
 BOARD_WLAN_DEVICE := bcm4329
 WIFI_DRIVER_FW_PATH_STA         := "/system/etc/wl/rtecdc.bin"
