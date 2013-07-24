@@ -110,7 +110,9 @@ PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
 
 # Enable Torch
-PRODUCT_PACKAGES += Torch
+PRODUCT_PACKAGES += Torch \
+    camerawrapper \
+    camera.tegra
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 PRODUCT_MANUFACTURER := LGE
