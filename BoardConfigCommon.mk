@@ -15,7 +15,6 @@ TARGET_CPU_VARIANT := cortex-a9
 ARCH_ARM_HAVE_TLS_REGISTER := true
 ARCH_ARM_USE_NON_NEON_MEMCPY := true
 TARGET_SPECIFIC_HEADER_PATH := device/lge/star-common/include
-TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := device/lge/star-common/releasetools/p990-newbl_ota_from_target_files
 COMMON_GLOBAL_CFLAGS += -DICS_AUDIO_BLOB -DICS_CAMERA_BLOB -DDISABLE_HW_ID_MATCH_CHECK
 
 # Bluetooth
