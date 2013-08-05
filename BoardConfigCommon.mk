@@ -21,7 +21,7 @@ COMMON_GLOBAL_CFLAGS += -DICS_AUDIO_BLOB -DICS_CAMERA_BLOB -DHAVE_ISO
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
 TARGET_NEEDS_BLUETOOTH_INIT_DELAY := true
-BOARD_BLUEDROID_VENDOR_CONF := device/lge/star-common/vnd_bt.txt
+BOARD_BLUEDROID_VENDOR_CONF := device/lge/star-common/configs/vnd_bt.txt
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/lge/star-common/bluetooth
 
 # Wlan
@@ -42,7 +42,7 @@ BOARD_WEXT_NO_COMBO_SCAN := true
 BOARD_USE_SKIA_LCDTEXT := true
 USE_OPENGL_RENDERER := true
 BOARD_NO_ALLOW_DEQUEUE_CURRENT_BUFFER := true
-BOARD_EGL_CFG := device/lge/star-common/egl.cfg
+BOARD_EGL_CFG := device/lge/star-common/configs/egl.cfg
 BOARD_EGL_NEEDS_LEGACY_FB := true
 
 # Audio
@@ -68,7 +68,7 @@ TARGET_RECOVERY_PRE_COMMAND := "/system/bin/setup-recovery"
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/platform/fsl-tegra-udc/gadget/lun%d/file"
 
 # Vibrator
-BOARD_HAS_VIBRATOR_IMPLEMENTATION := ../../device/lge/star-common/vibrator.c
+BOARD_HAS_VIBRATOR_IMPLEMENTATION := ../../device/lge/star-common/vibrator/vibrator.c
 
 # Light sensor
 BOARD_SYSFS_LIGHT_SENSOR := "/sys/class/backlight/aat2870-backlight/brightness_mode"

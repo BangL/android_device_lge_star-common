@@ -1,22 +1,28 @@
-DEVICE_PACKAGE_OVERLAYS += device/lge/star-common/overlay
+$(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
+$(call inherit-product, build/target/product/full_base_telephony.mk)
+PRODUCT_LOCALES += hdpi
+
+DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
 # Board-specific init
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/init_recovery.rc:root/init_recovery.rc \
-    $(LOCAL_PATH)/init.cm-star.rc:root/init.cm-star.rc \
-    $(LOCAL_PATH)/init.star.usb.rc:root/init.star.usb.rc
+    $(LOCAL_PATH)/rootdir/init_recovery.rc:root/init_recovery.rc \
+    $(LOCAL_PATH)/rootdir/init.cm-star.rc:root/init.cm-star.rc \
+    $(LOCAL_PATH)/rootdir/init.star.usb.rc:root/init.star.usb.rc
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/recovery/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh \
-    $(LOCAL_PATH)/media_profiles.xml:system/etc/media_profiles.xml \
-    $(LOCAL_PATH)/media_codecs.xml:system/etc/media_codecs.xml \
-    $(LOCAL_PATH)/asound.conf:system/etc/asound.conf \
-    $(LOCAL_PATH)/egl.cfg:system/lib/egl/egl.cfg \
+    $(LOCAL_PATH)/recovery/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml \
+    $(LOCAL_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml \
+    $(LOCAL_PATH)/configs/asound.conf:system/etc/asound.conf \
+    $(LOCAL_PATH)/configs/egl.cfg:system/lib/egl/egl.cfg \
+    $(LOCAL_PATH)/configs/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
+    $(LOCAL_PATH)/configs/dhcpcd.conf:system/etc/dhcpcd/dhcpcd.conf
+
+PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/setup-recovery:system/bin/setup-recovery \
-    $(LOCAL_PATH)/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
-    $(LOCAL_PATH)/dhcpcd.conf:system/etc/dhcpcd/dhcpcd.conf
-
-PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/star_synaptics.idc:system/usr/idc/star_synaptics.idc \
     $(LOCAL_PATH)/prebuilt/star_synaptics.kl:system/usr/keylayout/star_synaptics.kl \
     $(LOCAL_PATH)/prebuilt/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
@@ -74,12 +80,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.purgeable_assets=1
 
-$(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
-
-$(call inherit-product, build/target/product/full_base_telephony.mk)
-
-PRODUCT_LOCALES += hdpi
-
 # Ugly space-saving hack
 PRODUCT_PACKAGES += \
     srec-en
@@ -110,7 +110,10 @@ PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
 
 # Enable Torch
-PRODUCT_PACKAGES += Torch \
+PRODUCT_PACKAGES += \
+    Torch
+
+PRODUCT_PACKAGES += \
     camerawrapper \
     camera.tegra
 
