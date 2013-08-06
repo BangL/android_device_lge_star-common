@@ -56,7 +56,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     debug.sf.electron_frames=42 \
     nv-camera-disable-early-graph=1 \
     sys.mem.max_hidden_apps=4 \
-    ro.lge.audio_soundexception=true
+    ro.lge.audio_soundexception=true \
+    ro.bq.gpu_to_cpu_unsupported=1
 
 # Enable ZRAM by default
 PRODUCT_PROPERTY_OVERRIDES += \
